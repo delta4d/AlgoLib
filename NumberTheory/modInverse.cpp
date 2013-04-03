@@ -10,8 +10,8 @@ template <class T> T extGcd(T a, T b, T &x, T &y) {
 	return ret;
 }
 
-// find x such that a * x % n = 1
-template <class T> T modInverse(T a, T n) {
+// find x such that a * x % n = 1, (a, n) = 1
+template <class T> T modInv(T a, T n) {
 	T x, y;
 	extGcd(a, n, x, y);
 	x %= n;
