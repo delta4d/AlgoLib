@@ -1,9 +1,8 @@
 /*
-* MOD 为模， MAXN为最大维
-* matrix_mul(int, int[][], int[][])为计算两个n*n的矩阵的积，结果保留在x中，矩阵起点从0开始 
-* matrix_binary_exp(int, int[][], int)为计算x ^ exp % MOD，其中x为n*n的矩阵，exp为指数，返回结果在x中 
-* 复杂度O(n^3lg(exp))
-*/
+ * matrix_mul(int, int[][], int[][]) calc two nxn matrix, result is in x
+ * matrix_binary_exp(int, int[][], int) calc x ^ exp % MOD, x is an nxn matrix, result is in x
+ * complexity O(n^3*log(exp))
+ */
 
 #include <cstdio>
 #include <cstring>
