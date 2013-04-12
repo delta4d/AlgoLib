@@ -1,30 +1,37 @@
 // Binary Searh Tree
 // calculate sum[1..n] with log(n)
 
-#include <cstdio>
 #include <cstring>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
-const int MAXN = 10086;
+const int MAXN = 100000 + 86;
 
 inline int lowbit(const int x) {
 	return x & -x;
 }
 
+template <class T>
 struct BIT {
 	int n;
-	int x[MAXN + 1];
+	T x[MAXN + 1];
 
-	void init(int _n=MAXN) {
+	void init(LL _n=MAXN) {
 		n = _n;
 		memset(x, 0, sizeof(x));
 	}
-	void modify(int p, int off) {
+	void add(int p, T off) {
 		for (; p<=n; p+=lowbit(p)) x[p] += off;
 	}
-	int sum(int p) {
-		int tot = 0;
+	void add_interval(int l, int r, T off) {
+		add(l, off);
+		add(r+1, -off);
+	}
+	T sum(int p) {
+		T tot = 0;
 		for (; p>=1; p-=lowbit(p)) tot += x[p];
 		return tot;
 	}
 };
+
