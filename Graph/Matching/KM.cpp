@@ -33,10 +33,8 @@ void KM(int m, int n) {
 		memset(vy, false, sizeof(vy));
 		d = INF;
 		if (dfs(k, n)) continue;
-		for (int i=0; i<m; ++i) {
-			if (vx[i]) lx[i] -= d;
-			if (vy[i]) ly[i] += d;
-		}
+		for (int i=0; i<m; ++i) if (vx[i]) lx[i] -= d;
+		for (int i=0; i<n; ++i) if (vy[i]) ly[i] += d;
 		--k;
 	}
 }
@@ -64,4 +62,4 @@ int main() {
 	return 0;
 }
 
-// 6995078	 2014-07-02 07:59:57	delta_4d	 B - Beloved Sons	 GNU C++0x	Accepted	62 ms	820 KB
+// 6995202	 2014-07-02 08:52:09	delta_4d	 B - Beloved Sons	 GNU C++0x	Accepted	62 ms	820 KB
