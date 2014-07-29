@@ -1,13 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int const MAXN = 20000 + 10;
+int const MAXN = 100000 + 10;
 
 int sa[MAXN], r[MAXN], cnt[MAXN], tmp[MAXN];
-int h[MAXN], height[MAXN];
-char s[MAXN];
+int h[MAXN], height[MAXN], z[MAXN], last[MAXN];
+char s[MAXN], b[MAXN];
 
 void radix_sort(const int step, const int len) {
+	memset(tmp, 0, sizeof(tmp));
+
 	memset(cnt, 0, sizeof(cnt));
 	for (int i=1; i<=len; ++i) ++cnt[r[i+step]];
 	for (int i=1; i<MAXN; ++i) cnt[i] += cnt[i-1];
