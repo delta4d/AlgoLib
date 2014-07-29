@@ -4,8 +4,8 @@ using namespace std;
 int const MAXN = 100000 + 10;
 
 int sa[MAXN], r[MAXN], cnt[MAXN], tmp[MAXN];
-int h[MAXN], height[MAXN], z[MAXN], last[MAXN];
-char s[MAXN], b[MAXN];
+int h[MAXN], height[MAXN];
+char s[MAXN];
 
 void radix_sort(const int step, const int len) {
 	memset(tmp, 0, sizeof(tmp));
