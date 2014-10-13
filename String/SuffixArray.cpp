@@ -1,3 +1,6 @@
+// string s[] are based 0
+// sa[], r[], height[] are all based 1
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -45,4 +48,26 @@ void get_height(char s[], const int len) {
 		h[i] = p;
 	}
 	for (int i=1; i<=len; ++i) height[r[i]] = h[i];
+}
+
+void get_lcp(const int len) {
+	for (int i=0; i<=len; ++i) rmq[i][0] = height[i];
+	for (int k=1; (1<<k)<=len; ++k) {
+		for (int i=0; i<=len; ++i) {
+			rmq[i][k] = rmq[i][k-1];
+			int k2 = 1 << (k - 1);
+			if (i + k2 <= len) rmq[i][k] = min(rmq[i][k], rmq[i+k2][k-1]);
+		}
+	}
+}
+
+int lcp(int l, int r) {
+	if (l == r) return len - l + 1;
+	l = ::r[l], r = ::r[r];
+	if (l > r) swap(l, r);
+	++l;
+	int k = 0;
+	while ((1 << k) < r - l + 2) ++k; --k;
+	int ret = min(rmq[l][k], rmq[r-(1<<k)+1][k]);
+	return ret;
 }
